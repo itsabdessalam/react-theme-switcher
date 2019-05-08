@@ -1,8 +1,8 @@
 {
 	"name": "react-theme-switcher",
 	"version": "1.0.0",
-	"description": "React.js theme switcher component",
-	"main": "index.js",
+	"description": "A react theme switcher component",
+	"main": "build/index.js",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"start": "webpack --watch --mode=development",
@@ -12,18 +12,27 @@
 		"type": "git",
 		"url": "git+https://github.com/Abdessalam98/react-theme-switcher.git"
 	},
-	"keywords": [],
+	"keywords": [
+		"react",
+		"component",
+		"theme",
+		"switcher",
+		"dark",
+		"light",
+		"mode",
+		"color"
+	],
 	"author": "Abdessalam BENHARIRA",
-	"license": "ISC",
+	"license": "MIT",
 	"bugs": {
 		"url": "https://github.com/Abdessalam98/react-theme-switcher/issues"
 	},
 	"homepage": "https://github.com/Abdessalam98/react-theme-switcher#readme",
 	"peerDependencies": {
-		"react": "^16.8.6"
+		"react": "^16.8.6",
+		"react-dom": "^16.8.6"
 	},
 	"dependencies": {
-		"react": "^16.8.6",
 		"styled-components": "^4.2.0"
 	},
 	"devDependencies": {
@@ -44,6 +53,7 @@
 		"eslint-plugin-promise": "^4.1.1",
 		"eslint-plugin-standard": "^4.0.0",
 		"prettier": "^1.17.0",
+		"react": "^16.8.6",
 		"react-dom": "^16.8.6",
 		"webpack": "^4.30.0",
 		"webpack-cli": "^3.3.2"
