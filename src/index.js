@@ -71,9 +71,7 @@ const Switch = styled.span`
 class ThemeSwitcher extends Component {
 	constructor(props) {
 		super(props);
-		const globalWindow = typeof window !== "undefined";
 		this.state = {
-			globalWindow,
 			theme:
 				localStorage.getItem("theme") !== null
 					? localStorage.getItem("theme")
@@ -88,21 +86,20 @@ class ThemeSwitcher extends Component {
 	};
 
 	switchTheme = () => {
-		const { globalWindow, theme } = this.state;
+		const { theme } = this.state;
 		const { cssSelector } = this.props;
 		const seletor = document.querySelector(cssSelector);
 		const newTheme = theme === "light" ? "dark" : "light";
 
-		if (seletor.getAttribute("data-theme")) {
-			seletor.dataset.theme = newTheme;
-		}
-		if (globalWindow === true) {
-			localStorage.setItem("theme", newTheme);
-		}
-
-		this.setState({
-			theme: newTheme
-		});
+		this.setState(
+			{
+				theme: newTheme
+			},
+			() => {
+				seletor.dataset.theme = theme;
+				localStorage.setItem("theme", this.state.theme);
+			}
+		);
 	};
 
 	render() {
