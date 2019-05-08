@@ -50,7 +50,7 @@ Props you can pass to the component:
 
 ## Demo
 
-![demo](./screenshots/demo.gif)
+![demo](./preview/demo.gif)
 
 ## Author
 
