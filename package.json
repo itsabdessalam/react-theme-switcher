@@ -30,9 +30,7 @@
 	"homepage": "https://github.com/Abdessalam98/react-theme-switcher#readme",
 	"peerDependencies": {
 		"react": "^16.8.6",
-		"react-dom": "^16.8.6"
-	},
-	"dependencies": {
+		"react-dom": "^16.8.6",
 		"styled-components": "^4.2.0"
 	},
 	"devDependencies": {
@@ -57,5 +55,8 @@
 		"react-dom": "^16.8.6",
 		"webpack": "^4.30.0",
 		"webpack-cli": "^3.3.2"
+	},
+	"dependencies": {
+		"styled-components": "^4.2.0"
 	}
 }
