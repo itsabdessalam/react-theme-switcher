@@ -50,6 +50,8 @@ Props you can pass to the component:
 
 ## Demo
 
+Preview it on CodeSandbox <https://codesandbox.io/s/6yr87ozmkk>
+
 ![demo](./preview/demo.gif)
 
 ## Author
