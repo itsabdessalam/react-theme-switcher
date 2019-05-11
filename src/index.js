@@ -86,13 +86,18 @@ class ThemeSwitcher extends Component {
 	};
 
 	switchTheme = () => {
-		const { theme } = this.state;
 		const { cssSelector } = this.props;
 		const seletor = document.querySelector(cssSelector);
-		const newTheme = theme === "light" ? "dark" : "light";
-		seletor.dataset.theme = newTheme;
-		localStorage.setItem("theme", newTheme);
-		this.setState({ theme: newTheme });
+
+		this.setState(
+			currentState => ({
+				theme: currentState.theme === "light" ? "dark" : "light"
+			}),
+			() => {
+				seletor.dataset.theme = this.state.theme;
+				localStorage.setItem("theme", this.state.theme);
+			}
+		);
 	};
 
 	render() {
