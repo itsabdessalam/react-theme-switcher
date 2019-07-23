@@ -6,7 +6,7 @@
 
 ```bash
 # using yarn
-yarn add react-button-component
+yarn add react-theme-switcher
 
 # using npm
 npm install react-theme-switcher
