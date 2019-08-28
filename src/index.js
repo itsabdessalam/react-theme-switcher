@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import styled, { createGlobalStyle } from "styled-components";
+import { hexToRgba } from "./utils/helpers";
 
 const GlobalStyle = createGlobalStyle`
     body {
@@ -15,57 +16,36 @@ const GlobalStyle = createGlobalStyle`
     }
 `;
 
-const ThemeSwitcherWrapper = styled.div`
-	display: inline-block;
-	width: 45px;
-	height: 20px;
-	text-align: center;
+const ThemeSwitcherWrapper = styled.div``;
+
+const Button = styled.button`
+	display: block;
 	position: relative;
+	width: 48px;
+	height: 22px;
+	margin-left: 8px;
+	padding: 0;
+	border: none;
+	background: ${props => hexToRgba(props.switcherColor, 0.2)};
+	border-radius: 30px;
 	cursor: pointer;
-
-	label {
-		position: relative;
-		display: inline-block;
-		width: 100%;
-		height: 100%;
+	&::after {
+		content: "";
+		position: absolute;
+		top: 50%;
+		left: 12px;
+		width: 16px;
+		height: 16px;
+		background: ${props => props.switcherColor};
+		-webkit-transform: translateZ(0) translate(-50%, -50%);
+		transform: translateZ(0) translate(-50%, -50%);
+		border-radius: 30px;
+		transition: transform 0.2s cubic-bezier(0.75, 0, 0.08, 1) 0s,
+			-webkit-transform 0.2s cubic-bezier(0.75, 0, 0.08, 1) 0s;
 	}
-	input[type="checkbox"] {
-		display: block;
-		width: 100%;
-		height: 100%;
-		opacity: 0;
-		margin: auto;
-		pointer-events: all;
-		cursor: pointer;
-		&:checked ~ .button {
-			left: 25px;
-		}
+	&.active::after {
+		transform: translateX(24px) translate(-50%, -50%);
 	}
-`;
-
-const Button = styled.span`
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 20px;
-	height: 20px;
-	border-radius: 50%;
-	background-color: ${props => props.buttonColor};
-	box-shadow: 0 0.9px 1.8px rgba(0, 0, 0, 0.4);
-	transition: all 0.2s cubic-bezier(0.75, 0, 0.08, 1);
-	pointer-events: none;
-`;
-const Switch = styled.span`
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	width: 40px;
-	height: 10px;
-	border-radius: 5px;
-	background-color: ${props => props.switchColor};
-	transition: all 0.2s cubic-bezier(0.75, 0, 0.08, 1);
-	pointer-events: none;
 `;
 
 class ThemeSwitcher extends Component {
@@ -78,13 +58,13 @@ class ThemeSwitcher extends Component {
 					: "light"
 		};
 	}
+
 	componentDidMount = () => {
 		const { theme } = this.state;
 		const { cssSelector } = this.props;
 		const seletor = document.querySelector(cssSelector);
 		seletor.dataset.theme = theme;
 	};
-
 	switchTheme = () => {
 		const { cssSelector } = this.props;
 		const seletor = document.querySelector(cssSelector);
@@ -99,16 +79,15 @@ class ThemeSwitcher extends Component {
 			}
 		);
 	};
-
 	render() {
 		const { theme } = this.state;
+		const isActive = theme === "dark" ? "active" : "";
 		const {
+			switcherColor,
 			darkColor,
 			lightColor,
 			darkTextColor,
-			lightTextColor,
-			buttonColor,
-			switchColor
+			lightTextColor
 		} = this.props;
 		return (
 			<ThemeSwitcherWrapper>
@@ -118,18 +97,12 @@ class ThemeSwitcher extends Component {
 					darkTextColor={darkTextColor}
 					lightTextColor={lightTextColor}
 				/>
-				<label htmlFor="switcher">
-					<input
-						type="checkbox"
-						onChange={this.switchTheme}
-						defaultChecked={theme === "dark"}
-						name="switch"
-						value="switch"
-						aria-describedby="switch"
-					/>
-					<Switch className="switch" switchColor={switchColor} />
-					<Button className="button" buttonColor={buttonColor} />
-				</label>
+				<Button
+					switcherColor={switcherColor}
+					className={`${"button-switcher " + isActive}`}
+					aria-label="switch theme button"
+					onClick={this.switchTheme}
+				/>
 			</ThemeSwitcherWrapper>
 		);
 	}
@@ -137,10 +110,9 @@ class ThemeSwitcher extends Component {
 
 ThemeSwitcher.defaultProps = {
 	cssSelector: "body",
-	darkColor: "#282c34",
+	switcherColor: "#2775cc",
+	darkColor: "#1e2227",
 	lightColor: "#ffffff",
-	buttonColor: "#ffffff",
-	switchColor: "#2775cc",
 	lightTextColor: "#272b33",
 	darkTextColor: "#ffffff"
 };

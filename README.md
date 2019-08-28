@@ -21,14 +21,14 @@ import React from "react";
 import ThemeSwitcher from "react-theme-switcher";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <ThemeSwitcher />
-        <h2>React theme switcher</h2>
-      </header>
-    </div>
-  );
+	return (
+		<div className="App">
+			<header className="App-header">
+				<ThemeSwitcher />
+				<h2>React theme switcher</h2>
+			</header>
+		</div>
+	);
 }
 
 export default App;
@@ -38,13 +38,12 @@ Props you can pass to the component:
 
 ```js
 <ThemeSwitcher
-    cssSelector="body"
-    darkColor="#282c34"
-    lightColor="#ffffff"
-    buttonColor="#ffffff"
-    switchColor="#2775cc"
-    lightTextColor="#272b33"
-    darkTextColor="#ffffff"
+	cssSelector="body"
+	switcherColor="#2775cc"
+	darkColor="#282c34"
+	lightColor="#ffffff"
+	lightTextColor="#272b33"
+	darkTextColor="#ffffff"
 />
 ```
 
