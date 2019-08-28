@@ -51,8 +51,6 @@ Props you can pass to the component:
 
 Preview it on CodeSandbox <https://codesandbox.io/s/6yr87ozmkk>
 
-![demo](https://abdessalam-benharira.me/assets/images/projects/demo-react-theme-switcher.gif)
-
 ## Author
 
 [Abdessalam BENHARIRA](https://github.com/Abdessalam98)
