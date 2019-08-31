@@ -23,7 +23,6 @@ const Button = styled.button`
 	position: relative;
 	width: 48px;
 	height: 22px;
-	margin-left: 8px;
 	padding: 0;
 	border: none;
 	background: ${props => hexToRgba(props.switcherColor, 0.2)};
