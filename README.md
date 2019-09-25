@@ -53,4 +53,4 @@ Preview it on CodeSandbox <https://codesandbox.io/s/6yr87ozmkk>
 
 ## Author
 
-[Abdessalam BENHARIRA](https://github.com/Abdessalam98)
+[Abdessalam BENHARIRA](https://github.com/abdessalamb98)
